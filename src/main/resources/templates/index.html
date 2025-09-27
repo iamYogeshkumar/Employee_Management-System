@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+	th:replace="~{base::Layout(~{::title},~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Index PAge</title>
+</head>
+<body>
+	<section>
+		<div class="container p-5">
+			<div class="row">
+				<div class="col-md-9 offset-md-2">
+					<div class="card">
+						<div class="card-header text-center fs-4">Employee Details
+						<th:block th:if="${session.msg}">
+						<p  class="text-center fs-4 text-center">[[${session.msg}]]</p>
+						  <th:block th:text="${@employeeServiceImpl.remSessionMsg()}"></th:block>
+						</th:block>
+						
+						</div>
+
+						<div class="card-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Address</th>
+										<th scope="col">gender</th>
+										<th scope="col">Salary</th>
+										 <th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody >
+									<tr th:each="emp,c:${empList}">
+										<th >[[${c.count}]]</th>
+										<td>[[${emp.name}]]</td>
+										<td>[[${emp.email}]]</td>
+										<td>[[${emp.address}]]</td>
+										<td>[[${emp.gender}]]</td>
+										<td>[[${emp.salary}]]</td>
+										<td>
+										 <a th:href="@{'editEmp/'+${emp.id}}" class="btn btn-primary btn-sm">Edit</a> &nbsp
+										 <a th:href="@{'deleteEmp/'+${emp.id}}" class="btn btn-danger btn-sm">Delete</a>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
