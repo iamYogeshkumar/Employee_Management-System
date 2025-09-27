@@ -62,6 +62,10 @@
 	</dependencies>
 
 	<build>
+		<build>
+    <finalName>employee-management</finalName>
+       </build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
